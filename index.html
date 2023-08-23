@@ -52,5 +52,126 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <h1>This is jamie's Heading</h1>
 <p>This is jamie's paragraph.</p>
 <a href="/theotherpage">Visit the other page</a>
+<button onclick="prod1pdpviewFunction()">prod1pdpviewFunction</button>
+<button onclick="prod2pdpviewFunction()">prod2pdpviewFunction</button>
+<button onclick="prod1addFunction()">prod1addFunction</button>
+<button onclick="prod2addFunction()">prod2addFunction</button>
+<button onclick="prod1purchaseFunction()">prod1purchaseFunction</button>
+<button onclick="prod2purchaseFunction()">prod2purchaseFunction</button>
+
+
+<script>
+function prod1pdpviewFunction() {
+  window.snowplow('trackPageView', { 
+   "context": [{
+      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
+      "data": {
+         "name": "example_name1",
+         "quantity": 1,
+         "price": 100,
+         "category": "example_category",
+         "sku": "example_sku"
+     }
+   }]
+});
+}
+function prod2pdpviewFunction() {
+  window.snowplow('trackPageView', { 
+   "context": [{
+      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
+      "data": {
+         "name": "example_name2",
+         "quantity": 1,
+         "price": 50,
+         "category": "example_category",
+         "sku": "example_sku"
+     }
+   }]
+});
+}
+function prod1addFunction() {
+window.snowplow('trackSelfDescribingEvent', {
+   "event": {
+      "schema": "iglu:com.trysnowplow/cart_action/jsonschema/1-0-0",
+      "data": {
+         "type": "add" // or "remove"
+      }
+   },
+   "context": [{
+      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
+      "data": {
+         "name": "example_name1",
+         "quantity": 1,
+     "price": 100,
+     "category": "example_category",
+     "sku": "example_sku"
+      }
+   }]
+});
+}
+function prod2addFunction() {
+window.snowplow('trackSelfDescribingEvent', {
+   "event": {
+      "schema": "iglu:com.trysnowplow/cart_action/jsonschema/1-0-0",
+      "data": {
+         "type": "add" // or "remove"
+      }
+   },
+   "context": [{
+      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
+      "data": {
+         "name": "example_name2",
+         "quantity": 1,
+     "price": 50,
+     "category": "example_category",
+     "sku": "example_sku"
+      }
+   }]
+});
+}
+function prod1purchaseFunction() {
+window.snowplow('trackSelfDescribingEvent', { 
+   "event": {
+      "schema": "iglu:com.trysnowplow/purchase/jsonschema/1-0-0",
+      "data": {}
+   },
+   "context": [{
+      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
+      "data": {
+         "name": "example_name1",
+     "quantity": 1,
+     "price": 100,
+     "category": "example_category",
+     "sku": "example_sku"
+      }
+   }]
+});
+}
+function prod2purchaseFunction() {
+window.snowplow('trackSelfDescribingEvent', { 
+   "event": {
+      "schema": "iglu:com.trysnowplow/purchase/jsonschema/1-0-0",
+      "data": {}
+   },
+   "context": [{
+      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
+      "data": {
+         "name": "example_name2",
+     "quantity": 1,
+     "price": 50,
+     "category": "example_category",
+     "sku": "example_sku"
+      }
+   }]
+});
+}
+
+</script>
+
+
+
+
+
+
 </body>
 </html>
