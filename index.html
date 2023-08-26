@@ -58,6 +58,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <button onclick="prod2addFunction()">prod2addFunction</button>
 <button onclick="prod1purchaseFunction()">prod1purchaseFunction</button>
 <button onclick="prod2purchaseFunction()">prod2purchaseFunction</button>
+<button onclick="funnelstep1Function()">funnelstep1Function</button>
+<button onclick="funnelstep2Function()">funnelstep2Function</button>
+<button onclick="funnelstep3Function()">funnelstep3Function</button>
 
 
 <script>
@@ -163,6 +166,42 @@ window.snowplow('trackSelfDescribingEvent', {
      "sku": "example_sku"
       }
    }]
+});
+}
+function funnelstep1Function() {
+window.snowplow('trackSelfDescribingEvent', {
+   "event": {
+      "schema": "iglu:io.snowplow.foundation/funnel_interaction/jsonschema/1-0-0",
+      "data": {
+         "funnel_name": "example_funnel_named_jamie",
+         "step_name": "example_step_name1jamie",
+         "step_position": 1
+      }
+   }
+});
+}
+function funnelstep2Function() {
+window.snowplow('trackSelfDescribingEvent', {
+   "event": {
+      "schema": "iglu:io.snowplow.foundation/funnel_interaction/jsonschema/1-0-0",
+      "data": {
+         "funnel_name": "example_funnel_named_jamie",
+         "step_name": "example_step_name2jamie",
+         "step_position": 2
+      }
+   }
+});
+}
+  function funnelstep3Function() {
+window.snowplow('trackSelfDescribingEvent', {
+   "event": {
+      "schema": "iglu:io.snowplow.foundation/funnel_interaction/jsonschema/1-0-0",
+      "data": {
+         "funnel_name": "example_funnel_named_jamie",
+         "step_name": "example_step_name3jamie",
+         "step_position": 3
+      }
+   }
 });
 }
 
