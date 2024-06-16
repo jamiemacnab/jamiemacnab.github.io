@@ -64,18 +64,10 @@ snowplow("trackPageView");
 
 <script>
 function prod1pdpviewFunction() {
-  window.snowplow('trackPageView', { 
-   "context": [{
-      "schema": "iglu:com.trysnowplow/product/jsonschema/1-0-0",
-      "data": {
-         "name": "example_name1",
-         "quantity": 1,
-         "price": 100,
-         "category": "example_category",
-         "sku": "example_sku"
-     }
-   }]
-});
+  dataLayer.push({
+    'event': 'ExampleECEvent',
+    'email': 'jamiemacnab174@gmail.com' 
+                 });
 }
 function prod2pdpviewFunction() {
   window.snowplow('trackPageView', { 
